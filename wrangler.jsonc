@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2025-10-02",
+  "assets": {
+    "directory": "./dist/portfolio/browser",
+    "binding": "ASSETS"
+  }
+}

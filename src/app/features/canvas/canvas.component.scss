@@ -1,0 +1,73 @@
+.viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  background: #0f1115;
+}
+
+.viewport.panning {
+  cursor: grabbing;
+}
+
+.viewport.is-restored {
+  // optional visual cue
+}
+
+.world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  transform-origin: 0 0;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+.controls button {
+  background: rgba(15, 17, 21, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.9);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.controls button:hover {
+  background: rgba(25, 28, 36, 0.96);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.controls button:focus-visible {
+  outline: 2px solid var(--accent, #4d9bff);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world {
+    will-change: transform;
+  }
+}

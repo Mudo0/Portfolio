@@ -1,0 +1,25 @@
+.simple-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 16px 40px;
+  background: #0f1115;
+  min-height: 100dvh;
+}
+
+:host ::ng-deep .app-panel {
+  position: static !important;
+  width: min(90vw, 680px);
+  max-width: 680px;
+  transform: none !important;
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.9);
+  cursor: default;
+  touch-action: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host ::ng-deep .app-panel {
+    transition: none;
+  }
+}

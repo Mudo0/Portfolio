@@ -1,0 +1,40 @@
+:host {
+  position: absolute;
+  display: block;
+  width: 320px;
+  min-height: 240px;
+  background: var(--panel-bg, #1f2330);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.9);
+  padding: 24px;
+  cursor: grab;
+  touch-action: none;
+  will-change: left, top, transform, z-index;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+
+:host(.dragging) {
+  cursor: grabbing;
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.95);
+}
+
+:host(.focused) {
+  outline: 2px solid var(--accent, #4d9bff);
+  outline-offset: 4px;
+}
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host {
+    will-change: left, top, z-index;
+  }
+}

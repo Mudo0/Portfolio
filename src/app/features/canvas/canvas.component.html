@@ -1,0 +1,56 @@
+<div
+  #viewport
+  class="viewport"
+  (pointerdown)="onPointerDownViewport($event)"
+  (wheel)="onWheel($event)"
+  [ngClass]="{ 'is-restored': isRestored() }"
+>
+  <div
+    class="world"
+    [style.transform]="
+      'translate(' + viewportX() + 'px, ' + viewportY() + 'px) scale(' + zoom() + ')'
+    "
+  >
+    <div class="grid"></div>
+
+    @for (panel of panels(); track panel.id) {
+      <app-panel
+        [id]="panel.id"
+        [x]="panel.x"
+        [y]="panel.y"
+        [zIndex]="panel.zIndex"
+        [rotation]="panel.rotation"
+        [ariaLabel]="panel.id + ' panel'"
+        (pointerdown)="onPanelPointerDown(panel.id, $event)"
+        (keydown)="onPanelKeydown(panel.id, $event)"
+        (focus)="onPanelFocus(panel.id)"
+        (blur)="onPanelBlur(panel.id)"
+      >
+        @switch (panel.id) {
+          @case ('hero') {
+            <app-hero-panel></app-hero-panel>
+          }
+          @case ('projects') {
+            <app-projects-panel></app-projects-panel>
+          }
+          @case ('about') {
+            <app-about-panel></app-about-panel>
+          }
+          @case ('experience') {
+            <app-experience-panel></app-experience-panel>
+          }
+          @case ('contact') {
+            <app-contact-panel></app-contact-panel>
+          }
+          @default {
+            <h2>{{ panel.id }}</h2>
+          }
+        }
+      </app-panel>
+    }
+  </div>
+</div>
+
+<div class="controls">
+  <button type="button" (click)="resetLayout()">Reset layout</button>
+</div>

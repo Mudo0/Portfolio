@@ -1,0 +1,34 @@
+<main class="simple-layout">
+  @for (panel of panels(); track panel.id) {
+    <app-panel
+      [id]="panel.id"
+      [x]="0"
+      [y]="0"
+      [zIndex]="1"
+      [rotation]="0"
+      [ariaLabel]="panel.id + ' section'"
+      [customTransform]="'none'"
+    >
+      @switch (panel.id) {
+        @case ('hero') {
+          <app-hero-panel></app-hero-panel>
+        }
+        @case ('projects') {
+          <app-projects-panel></app-projects-panel>
+        }
+        @case ('about') {
+          <app-about-panel></app-about-panel>
+        }
+        @case ('experience') {
+          <app-experience-panel></app-experience-panel>
+        }
+        @case ('contact') {
+          <app-contact-panel></app-contact-panel>
+        }
+        @default {
+          <h2>{{ panel.id }}</h2>
+        }
+      }
+    </app-panel>
+  }
+</main>
